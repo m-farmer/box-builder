@@ -4,11 +4,12 @@ class Product extends Component {
 
   render() {
 
-    let {product} = this.props;
+    let {name, points, volume, key} = this.props;
+    console.log('product in Product', this.props)
 
     return (
       <div className="Product">
-        {product}
+        {name}
       </div>
     )
   }
