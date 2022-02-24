@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './DropdownMenu.css'
+import './styles/DropdownMenu.css'
 
 class Dropdown extends Component {
 
@@ -22,6 +22,8 @@ class Dropdown extends Component {
     return (
       <section className="Dropdown">
         <div className="subscribe-button">
+        <h1>This is the dropdown section</h1>
+        {/* using index to determine subscription selection */}
          {subscription.map((sub, idx) =>
          <button onClick={this.handleClickSubscription}
           value={sub.name}
@@ -30,7 +32,7 @@ class Dropdown extends Component {
          >
          {sub.name}</button>)}
         </div>
-        <h1>This is the dropdown section</h1>
+
 
       </section>
     )

@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import "./MainPage.css";
+import "./styles/MainPage.css";
 import Dropdown from "./DropdownMenu";
+import BoxContents from "./BoxContents";
+import ProductList from "./ProductList";
 import axios from 'axios';
 
 const BOX_API = "https://mystifying-spence-dc3bda.netlify.app/build-a-box/";
@@ -53,12 +55,11 @@ class MainPage extends Component {
             />
           </div>
           <div className="columns">
-            <h2>Hi!</h2>
+            <BoxContents box={this.state.box}/>
           </div>
         </section>
         <section className="products">
-         <h2>This is the products section</h2>
-          <button>Doesn't do anything yet</button>
+         <ProductList products={this.state.products}/>
         </section>
       </div>
     );
