@@ -58,7 +58,7 @@ class MainPage extends Component {
             <BoxContents box={this.state.box}/>
           </div>
         </section>
-        <section className="products">
+        <section>
          <ProductList products={this.state.products}/>
         </section>
       </div>

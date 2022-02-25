@@ -3,9 +3,19 @@ import "./styles/ProductList.css";
 import Product from "./Product";
 
 class ProductList extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.updateBoxClick = this.updateBoxClick.bind(this);
+  }
+
+  updateBoxClick () {
+
+  }
+
   render() {
     let { products } = this.props;
-    console.log("products in ProductList", products, typeof products);
 
     const categories = [
       ...new Set(products.map((product) => product.category.name)),
@@ -15,20 +25,18 @@ class ProductList extends Component {
       products.filter((item) => item.category.name === category)
     );
 
-    console.log("groupByCategory", groupByCategory);
-
     // note: objects are not valid as React children
 
     return (
       <div className="ProductList">
-        <h1>This is the ProductList section</h1>
         {groupByCategory.map((category, idx) => (
           <div>
             <h1>{categories[idx]}</h1>
-            <div>
+            <div className="ProductList-items">
               {category.map((item) => (
                 <Product
                   key={item.id}
+                  description={item.description}
                   name={item.name}
                   volume={item.volume}
                   points={item.points}
