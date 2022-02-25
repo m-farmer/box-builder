@@ -12,9 +12,9 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxValue: 0,
+      maxPoints: 0,
       maxVolume: 0,
-      currentValue: 0,
+      currentPoints: 0,
       currentVolume: 0,
       subscriptions: [],
       products: [],
@@ -41,8 +41,32 @@ class MainPage extends Component {
       maxValue: mySubscription.maxValue,
       maxVolume: mySubscription.maxVolume
     })
-
   }
+
+
+  calculateRemainingSpace(boxObject) {
+
+    let totalPoints=0, totalVolume=0;
+    for (let product in boxObject) {
+      totalPoints += boxObject[product].qty * boxObject[product].points;
+      totalVolume += boxObject[product].qty * boxObject[product].volume;
+    }
+
+    let remainingPoints = this.state.maxPoints - totalPoints;
+    let remainingVolume = this.state.maxVolume - totalVolume;
+
+    console.log('remainingPoints:', remainingPoints, 'remainingVolume:', remainingVolume)
+
+    return [remainingPoints, remainingVolume];
+  }
+
+  updateBox (boxObject) {
+
+    console.log('boxObject:', boxObject)
+    // let remainingPoints = this.calculateRemainingSpace(boxObject);
+    // console.log('remainingPoints', remainingPoints);
+  }
+
   render() {
     return (
       <div className="App">
@@ -59,7 +83,10 @@ class MainPage extends Component {
           </div>
         </section>
         <section>
-         <ProductList products={this.state.products}/>
+         <ProductList
+          products={this.state.products}
+          updateBox={this.updateBox}
+         />
         </section>
       </div>
     );

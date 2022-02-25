@@ -3,18 +3,31 @@ import "./styles/Product.css"
 
 class Product extends Component {
 
+  // a bit like having a react form, so making it stateful
+
   constructor(props) {
     super(props);
     this.state = {
-      quantity: 0
+      quantity: 0,
+      individualProduct: {}
     }
-    this.handleUpdateBoxClick = this.handleUpdateBoxClick.bind(this);
     this.handleDecreaseValue = this.handleDecreaseValue.bind(this);
     this.handleIncreaseValue = this.handleIncreaseValue.bind(this);
+    this.handleUpdateBox = this.handleUpdateBox.bind(this);
   }
 
-  handleUpdateBoxClick () {
-
+  newBoxCopy(qty) {
+    return {...this.state.boxCopy,
+      name: this.props.name,
+      points: this.props.points,
+      volume: this.props.volume,
+      qty: qty
+    }
+  }
+  handleUpdateBox (qty) {
+   let selectedProduct = this.newBoxCopy(qty);
+   this.props.updateBox(selectedProduct);
+   console.log('selectedProduct in Product:', selectedProduct)
   }
 
 
@@ -25,7 +38,9 @@ class Product extends Component {
 
   handleDecreaseValue() {
     // value must be greater than zero
-    this.state.quantity >= 1 && this.setState(this.decreaseValue)
+    this.state.quantity >= 1 && this.setState(this.decreaseValue);
+    this.handleUpdateBox(this.state.quantity);
+
   }
 
   increaseValue(currentState) {
@@ -38,11 +53,10 @@ class Product extends Component {
 
   // import function to reset everything to 0 if a new box size is chosen
   render() {
-
     let {name, description, points, volume} = this.props;
 
     return (
-      <div className="Product" id="choose-quanitty">
+      <div className="Product">
         <h2>{name}</h2>
         <h3>{description}</h3>
         <h3>Volume: {volume} in³</h3>

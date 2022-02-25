@@ -14,25 +14,18 @@ h3 {
 
 }
 
-#choose-quantity .edit-product {
-  display: flex;
-  align-items: flex-end;
-}
-
 .edit-product {
   display: flex;
   height: 60px;
   justify-content: center;
+  /* this aligns elements to bottom */
+  margin-top: auto;
 }
 
 .value-button {
-
-
-  font-size: 2rem;
+  font-size: 2em;
   width: 50px;
   text-align: center;
-
-  padding: 10px 0;
   background: lightseagreen;
 }
 

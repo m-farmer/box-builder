@@ -5,7 +5,9 @@ class BoxContents extends Component {
   // for now, the box is only for displaying information and doesn't hold state (no constructor)
   render() {
 
-    console.log('this.props inside BoxContents', this.props)
+    let { box } = this.props;
+
+    console.log('this.props inside BoxContents', box)
     return (
       <div>
 

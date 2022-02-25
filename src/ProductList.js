@@ -10,7 +10,7 @@ class ProductList extends Component {
     this.updateBoxClick = this.updateBoxClick.bind(this);
   }
 
-  updateBoxClick () {
+  updateBoxClick (boxObject) {
 
   }
 
@@ -40,6 +40,7 @@ class ProductList extends Component {
                   name={item.name}
                   volume={item.volume}
                   points={item.points}
+                  updateBox={this.props.updateBox}
                 />
               ))}
             </div>
