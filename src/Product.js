@@ -6,49 +6,56 @@ class Product extends Component {
   // a bit like having a react form, so making it stateful
 
   constructor(props) {
-    super(props);
+    // don't need props inside super if we're not using props inside the constructor
+    super();
     this.state = {
       quantity: 0,
-      individualProduct: {}
     }
     this.handleDecreaseValue = this.handleDecreaseValue.bind(this);
     this.handleIncreaseValue = this.handleIncreaseValue.bind(this);
     this.handleUpdateBox = this.handleUpdateBox.bind(this);
   }
 
-  newBoxCopy(qty) {
-    return {...this.state.boxCopy,
-      name: this.props.name,
-      points: this.props.points,
-      volume: this.props.volume,
-      qty: qty
-    }
-  }
+
   handleUpdateBox (qty) {
-   let selectedProduct = this.newBoxCopy(qty);
+   let selectedProduct = {
+     name: this.props.name,
+     points: this.props.points,
+     volume: this.props.volume,
+     qty: qty
+   }
+   // send this new object up to MainPage, where the box contents will be updated
    this.props.updateBox(selectedProduct);
-   console.log('selectedProduct in Product:', selectedProduct)
   }
 
 
-  // if setState depends on current state, it's best to use the alternate callback form
-  decreaseValue(currentState) {
-    return { quantity: currentState.quantity - 1}
-  }
+  // setState is asynchronous and may not update the state right away. passing it a callback is a way to access values as soon as the state is updated
+  // decreaseValue(currentState) {
+  //   return { quantity: currentState.quantity - 1}
+  // }
+
+  // increaseValue(currentState) {
+  //   return { quantity: currentState.quantity + 1}
+  // }
 
   handleDecreaseValue() {
     // value must be greater than zero
-    this.state.quantity >= 1 && this.setState(this.decreaseValue);
-    this.handleUpdateBox(this.state.quantity);
+    // this.state.quantity >= 1 && this.setState(this.decreaseValue);
+    // this.handleUpdateBox(this.state.quantity);
 
-  }
-
-  increaseValue(currentState) {
-    return { quantity: currentState.quantity + 1}
+    this.state.quantity >= 1 && this.setState({quantity: this.state.quantity - 1},
+      () => this.handleUpdateBox(this.state.quantity));
   }
 
   handleIncreaseValue() {
-    this.setState(this.increaseValue)
+    // this.setState(this.increaseValue);
+    // this.setState(curState => ({quantity: curState.quantity + 1}))
+
+    // using the callback method - passing an anonymous function, which then calls handleUpdateBox after state is updated instead of running handleUpdateBox before the updating has finished.
+    // this is to avoid the quantity in the box only updating AFTER the user clicks the '+' a SECOND time
+    this.setState({quantity: this.state.quantity + 1},
+      () => this.handleUpdateBox(this.state.quantity));
+    // this.handleUpdateBox(this.state.quantity);
   }
 
   // import function to reset everything to 0 if a new box size is chosen

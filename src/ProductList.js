@@ -4,15 +4,15 @@ import Product from "./Product";
 
 class ProductList extends Component {
 
-  constructor(props) {
-    super(props);
+  // constructor(props) {
+  //   super(props);
 
-    this.updateBoxClick = this.updateBoxClick.bind(this);
-  }
+  //   this.updateBoxClick = this.updateBoxClick.bind(this);
+  // }
 
-  updateBoxClick (boxObject) {
+  // updateBoxClick (boxObject) {
 
-  }
+  // }
 
   render() {
     let { products } = this.props;

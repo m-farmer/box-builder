@@ -12,15 +12,15 @@ class MainPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxPoints: 0,
-      maxVolume: 0,
       currentPoints: 0,
       currentVolume: 0,
       subscriptions: [],
       products: [],
+      mySubscription: {},
       box: {}
     }
     this.clickSubscription = this.clickSubscription.bind(this);
+    this.updateBox = this.updateBox.bind(this);
   }
 
   // explain WHY using componentDidMount and WHY I'm making an AJAX request here
@@ -36,21 +36,22 @@ class MainPage extends Component {
 
   clickSubscription (subscriptionChoice) {
     // value passed in is index of subscription (from subscriptions array) based on button click in DropdownMenu
-    let mySubscription = this.state.subscriptions[subscriptionChoice]
-    this.setState ({
-      maxValue: mySubscription.maxValue,
-      maxVolume: mySubscription.maxVolume
-    })
+    // this is working properly. console.log inside render method to see.
+    let chosenSubscription = this.state.subscriptions[subscriptionChoice];
+    this.setState ({mySubscription: chosenSubscription});
   }
 
 
   calculateRemainingSpace(boxObject) {
 
-    let totalPoints=0, totalVolume=0;
-    for (let product in boxObject) {
-      totalPoints += boxObject[product].qty * boxObject[product].points;
-      totalVolume += boxObject[product].qty * boxObject[product].volume;
-    }
+
+
+    console.log('boxObject inside calculateRemainingSpace', boxObject)
+
+    let totalPoints = boxObject.qty * boxObject.points;
+    let totalVolume = boxObject.qty * boxObject.volume;
+
+    //bug: still subtracts from total volume and points even if they're 0
 
     let remainingPoints = this.state.maxPoints - totalPoints;
     let remainingVolume = this.state.maxVolume - totalVolume;
@@ -63,8 +64,8 @@ class MainPage extends Component {
   updateBox (boxObject) {
 
     console.log('boxObject:', boxObject)
-    // let remainingPoints = this.calculateRemainingSpace(boxObject);
-    // console.log('remainingPoints', remainingPoints);
+    let remainingPoints = this.calculateRemainingSpace(boxObject);
+    console.log('remainingPoints', remainingPoints);
   }
 
   render() {
