@@ -9,7 +9,7 @@ class Product extends Component {
     // don't need props inside super if we're not using props inside the constructor
     super();
     this.state = {
-      quantity: 0,
+      quantity: 0
     }
     this.handleDecreaseValue = this.handleDecreaseValue.bind(this);
     this.handleIncreaseValue = this.handleIncreaseValue.bind(this);
@@ -46,7 +46,12 @@ class Product extends Component {
 
   // once a subscription is chosen, remainingVolume and remainingValue will no longer be 0 and things can be added to the box.
   render() {
-    let {name, description, points, volume, remainingVolume, remainingPoints} = this.props;
+    let {name, description, points, volume, remainingVolume, remainingPoints, mySubscription} = this.props;
+
+    let isDeactivated = remainingVolume < volume || remainingPoints < points;
+    let message = !mySubscription.name ? "Please choose a subscription" : "Too big for the box!"
+
+    // some class={isDeactivated && message}
 
     console.log('remainingVolume and remainingPoints inside Product', remainingVolume, remainingPoints)
     return (
@@ -56,9 +61,23 @@ class Product extends Component {
         <h3>Volume: {volume} in³</h3>
         <h3>{points} points</h3>
         <div className="edit-product">
-          <div className="value-button" id="increase" onClick={this.handleIncreaseValue}>+</div>
+          <button
+          className="value-button"
+          id="increase"
+          onClick={this.handleIncreaseValue}
+          disabled={isDeactivated}
+          >
+          {isDeactivated && <span className="tooltiptext">{message}</span>}
+          +
+          </button>
           <div id="number"><h2>{this.state.quantity}</h2></div>
-          <div className="value-button" id="decrease" onClick={this.handleDecreaseValue}>-</div>
+          <button
+          className="value-button"
+          id="decrease"
+          onClick={this.handleDecreaseValue}
+          >
+          -
+          </button>
         </div>
       </div>
     )

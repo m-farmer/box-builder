@@ -55,7 +55,8 @@ class MainPage extends Component {
       newBox[item.id] = {
         qty: 0,
         volume: item.volume,
-        points: item.points
+        points: item.points,
+        name: item.name
       };
 
     })
@@ -70,7 +71,6 @@ class MainPage extends Component {
         ...this.state.box,
         [id]: {...this.state.box[id], qty: qty}
       }
-      // sub with componentDidUpdate?
     }, () => this.calculateRemainingSpace())
 
     /*
@@ -122,7 +122,11 @@ class MainPage extends Component {
             />
           </div>
           <div className="columns">
-            <BoxContents box={this.state.box}/>
+            <BoxContents
+              box={this.state.box}
+              remainingPoints={this.state.remainingPoints}
+              remainingVolume={this.state.remainingVolume}
+            />
           </div>
         </section>
         <section>
@@ -131,6 +135,7 @@ class MainPage extends Component {
           updateBox={this.updateBox}
           remainingPoints={this.state.remainingPoints}
           remainingVolume={this.state.remainingVolume}
+          mySubscription={this.state.mySubscription}
          />
         </section>
       </div>

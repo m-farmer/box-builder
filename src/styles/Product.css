@@ -53,3 +53,23 @@ h3 {
   margin-left: -4px;
   border-radius: 0 8px 8px 0;
 }
+
+.value-button .tooltiptext {
+  display: flex;
+  visibility: hidden;
+  background-color: seagreen;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  font-size: 1.5rem;
+  margin-top: 70px;
+
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.value-button:hover .tooltiptext {
+  visibility: visible;
+}
