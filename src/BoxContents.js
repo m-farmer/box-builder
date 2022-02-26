@@ -6,8 +6,6 @@ class BoxContents extends Component {
   render() {
 
     let { box } = this.props;
-
-    console.log('this.props inside BoxContents', box)
     return (
       <div>
 

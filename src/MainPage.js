@@ -12,8 +12,8 @@ class MainPage extends Component {
   constructor(props) {
     super();
     this.state = {
-      currentPoints: 0,
-      currentVolume: 0,
+      remainingPoints: 0,
+      remainingVolume: 0,
       subscriptions: [],
       products: [],
       mySubscription: {},
@@ -23,6 +23,10 @@ class MainPage extends Component {
     this.updateBox = this.updateBox.bind(this);
   }
 
+
+  // PUT THE TESTING FUNCTIONS IN!!!
+
+  // several methods are triggered as the result of an event but NOT DIRECTLY
   // explain WHY using componentDidMount and WHY I'm making an AJAX request here
   async componentDidMount() {
     let subscriptionResponse = await axios.get(`${BOX_API}subscriptions.json`);
@@ -39,41 +43,69 @@ class MainPage extends Component {
     // value passed in is index of subscription (from subscriptions array) based on button click in DropdownMenu
     // this is working properly. console.log inside render method to see.
     let chosenSubscription = this.state.subscriptions[subscriptionChoice];
-    this.setState ({mySubscription: chosenSubscription});
+    this.setState ({
+      mySubscription: chosenSubscription
+    }, () => this.calculateRemainingSpace());
   }
 
   createBox(products) {
     // once the data is retrieved from the API, the state of the box is initialized to an object where the quantity of each product is 0
     let newBox = {};
-    products.forEach(item => newBox[item.id] = 0);
+    products.forEach(item => {
+      newBox[item.id] = {
+        qty: 0,
+        volume: item.volume,
+        points: item.points
+      };
+
+    })
     this.setState({ box: newBox })
   }
 
   updateBox (id, qty) {
-    // id and qty are passed up from the Product component. the state of the box is updated to reflect the new quantity based on the id (ie, "orange-hibiscus: 1")
-    // using the callback form because......?
-    this.setState(currentState => ({
+    // id and qty are passed up from the Product component. the state of the box is updated to reflect the new quantity based on the id
+
+    this.setState({
       box: {
-        ...currentState.box,
-        [id] : qty
+        ...this.state.box,
+        [id]: {...this.state.box[id], qty: qty}
       }
-    }))
+      // sub with componentDidUpdate?
+    }, () => this.calculateRemainingSpace())
+
+    /*
+    from React docs: https://reactjs.org/docs/react-component.html#setstate
+    The second parameter to setState() is an optional callback function that will be executed once setState is completed and the component is re-rendered. Generally we recommend using componentDidUpdate() for such logic instead.
+    */
+
+    /*
+    If the next state depends on the current state, we recommend using the updater function form
+    But the next form of state does not depend on the current state. i'm not incrementing anything here, which is why I think it's ok to use the code above ^
+    */
+
+    // this.setState(currentState => ({
+    //   box: {
+    //     ...currentState.box,
+    //     [id]: {...currentState.box[id], qty: qty}
+    //   }
+    //   //componentDidUpdate?
+    // }), () => this.calculateRemainingSpace())
+
   }
 
-  calculateRemainingSpace(boxObject) {
-    console.log('boxObject inside calculateRemainingSpace', boxObject)
+  // called after the subscription is chosen AND whenever an item is added to the box.
+  calculateRemainingSpace() {
 
-    let totalPoints = boxObject.qty * boxObject.points;
-    let totalVolume = boxObject.qty * boxObject.volume;
+    let totalVol = 0, totalPoints = 0;
+    for (let product in this.state.box) {
+      totalVol += this.state.box[product].volume * this.state.box[product].qty;
+      totalPoints += this.state.box[product].points * this.state.box[product].qty;
+    }
 
-    //bug: still subtracts from total volume and points even if they're 0
-
-    let remainingPoints = this.state.maxPoints - totalPoints;
-    let remainingVolume = this.state.maxVolume - totalVolume;
-
-    console.log('remainingPoints:', remainingPoints, 'remainingVolume:', remainingVolume)
-
-    return [remainingPoints, remainingVolume];
+    this.setState({
+      remainingVolume: this.state.mySubscription.maxVolume - totalVol,
+      remainingPoints: this.state.mySubscription.maxValue - totalPoints
+    })
   }
 
 
@@ -97,6 +129,8 @@ class MainPage extends Component {
          <ProductList
           products={this.state.products}
           updateBox={this.updateBox}
+          remainingPoints={this.state.remainingPoints}
+          remainingVolume={this.state.remainingVolume}
          />
         </section>
       </div>

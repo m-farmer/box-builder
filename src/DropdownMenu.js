@@ -4,7 +4,8 @@ import './styles/DropdownMenu.css'
 class Dropdown extends Component {
 
   constructor(props) {
-    super(props);
+    // don't need props inside constructor so don't call it with super
+    super();
     // we need to bind so that the method refers to the context of this component
     this.handleClickSubscription = this.handleClickSubscription.bind(this);
   }
@@ -22,7 +23,7 @@ class Dropdown extends Component {
     return (
       <section className="Dropdown">
         <div className="subscribe-button">
-        <h1>This is the dropdown section</h1>
+        <h1>Choose a subscription!</h1>
         {/* using index to determine subscription selection */}
          {subscription.map((sub, idx) =>
          <button onClick={this.handleClickSubscription}

@@ -15,7 +15,7 @@ class ProductList extends Component {
   // }
 
   render() {
-    let { products } = this.props;
+    let { products, remainingPoints, remainingVolume } = this.props;
 
     const categories = [
       ...new Set(products.map((product) => product.category.name)),
@@ -42,6 +42,8 @@ class ProductList extends Component {
                   volume={item.volume}
                   points={item.points}
                   updateBox={this.props.updateBox}
+                  remainingVolume={remainingVolume}
+                  remainingPoints={remainingPoints}
                 />
               ))}
             </div>

@@ -13,16 +13,10 @@ class Product extends Component {
     }
     this.handleDecreaseValue = this.handleDecreaseValue.bind(this);
     this.handleIncreaseValue = this.handleIncreaseValue.bind(this);
-    this.handleUpdateBox = this.handleUpdateBox.bind(this);
   }
 
 
   handleUpdateBox (quantity) {
-
-  //  let selectedProduct = {
-  //   id: this.props.id,
-  //   qty: qty
-  //  }
   let id = this.props.id, qty = quantity;
    // send this new object up to MainPage, where the box contents will be updated
    this.props.updateBox(id, qty);
@@ -30,39 +24,31 @@ class Product extends Component {
 
 
   // setState is asynchronous and may not update the state right away. passing it a callback is a way to access values as soon as the state is updated
-  // decreaseValue(currentState) {
-  //   return { quantity: currentState.quantity - 1}
-  // }
-
-  // increaseValue(currentState) {
-  //   return { quantity: currentState.quantity + 1}
-  // }
 
   handleDecreaseValue() {
     // value must be greater than zero
-    // this.state.quantity >= 1 && this.setState(this.decreaseValue);
-    // this.handleUpdateBox(this.state.quantity);
 
-    this.state.quantity >= 1 && this.setState({quantity: this.state.quantity - 1},
-      () => this.handleUpdateBox(this.state.quantity));
+    // React docs: If the next state depends on the current state, we recommend using the updater function form (currentState => )
+    this.state.quantity >= 1 &&
+    this.setState(currentState => ({quantity: currentState.quantity - 1}),
+    () => this.handleUpdateBox(this.state.quantity))
   }
 
   handleIncreaseValue() {
-    // this.setState(this.increaseValue);
-    // this.setState(curState => ({quantity: curState.quantity + 1}))
 
     // using the callback method - passing an anonymous function as a second argument, which then calls handleUpdateBox after state is updated instead of running handleUpdateBox before the updating has finished.
     // this is to avoid the quantity in the box only updating AFTER the user clicks the '+' a SECOND time
-    this.setState({quantity: this.state.quantity + 1},
+    this.setState(currentState => ({quantity: currentState.quantity + 1}),
       () => this.handleUpdateBox(this.state.quantity));
-    // this.handleUpdateBox(this.state.quantity);
   }
 
   // import function to reset everything to 0 if a new box size is chosen
+
+  // once a subscription is chosen, remainingVolume and remainingValue will no longer be 0 and things can be added to the box.
   render() {
-    let {name, description, points, volume} = this.props;
+    let {name, description, points, volume, remainingVolume, remainingPoints} = this.props;
 
-
+    console.log('remainingVolume and remainingPoints inside Product', remainingVolume, remainingPoints)
     return (
       <div className="Product">
         <h2>{name}</h2>
