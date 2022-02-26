@@ -17,15 +17,15 @@ class Product extends Component {
   }
 
 
-  handleUpdateBox (qty) {
-   let selectedProduct = {
-     name: this.props.name,
-     points: this.props.points,
-     volume: this.props.volume,
-     qty: qty
-   }
+  handleUpdateBox (quantity) {
+
+  //  let selectedProduct = {
+  //   id: this.props.id,
+  //   qty: qty
+  //  }
+  let id = this.props.id, qty = quantity;
    // send this new object up to MainPage, where the box contents will be updated
-   this.props.updateBox(selectedProduct);
+   this.props.updateBox(id, qty);
   }
 
 
@@ -51,7 +51,7 @@ class Product extends Component {
     // this.setState(this.increaseValue);
     // this.setState(curState => ({quantity: curState.quantity + 1}))
 
-    // using the callback method - passing an anonymous function, which then calls handleUpdateBox after state is updated instead of running handleUpdateBox before the updating has finished.
+    // using the callback method - passing an anonymous function as a second argument, which then calls handleUpdateBox after state is updated instead of running handleUpdateBox before the updating has finished.
     // this is to avoid the quantity in the box only updating AFTER the user clicks the '+' a SECOND time
     this.setState({quantity: this.state.quantity + 1},
       () => this.handleUpdateBox(this.state.quantity));
@@ -61,6 +61,7 @@ class Product extends Component {
   // import function to reset everything to 0 if a new box size is chosen
   render() {
     let {name, description, points, volume} = this.props;
+
 
     return (
       <div className="Product">

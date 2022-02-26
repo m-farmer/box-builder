@@ -36,6 +36,7 @@ class ProductList extends Component {
               {category.map((item) => (
                 <Product
                   key={item.id}
+                  id={item.id}
                   description={item.description}
                   name={item.name}
                   volume={item.volume}

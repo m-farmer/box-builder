@@ -10,7 +10,7 @@ const BOX_API = "https://mystifying-spence-dc3bda.netlify.app/build-a-box/";
 class MainPage extends Component {
 
   constructor(props) {
-    super(props);
+    super();
     this.state = {
       currentPoints: 0,
       currentVolume: 0,
@@ -30,8 +30,9 @@ class MainPage extends Component {
 
     this.setState({
       subscriptions: subscriptionResponse.data.subscriptions,
-      products: productsResponse.data.products
-    })
+      products: productsResponse.data.products,
+    }, () => this.createBox(this.state.products))
+
   }
 
   clickSubscription (subscriptionChoice) {
@@ -41,11 +42,25 @@ class MainPage extends Component {
     this.setState ({mySubscription: chosenSubscription});
   }
 
+  createBox(products) {
+    // once the data is retrieved from the API, the state of the box is initialized to an object where the quantity of each product is 0
+    let newBox = {};
+    products.forEach(item => newBox[item.id] = 0);
+    this.setState({ box: newBox })
+  }
+
+  updateBox (id, qty) {
+    // id and qty are passed up from the Product component. the state of the box is updated to reflect the new quantity based on the id (ie, "orange-hibiscus: 1")
+    // using the callback form because......?
+    this.setState(currentState => ({
+      box: {
+        ...currentState.box,
+        [id] : qty
+      }
+    }))
+  }
 
   calculateRemainingSpace(boxObject) {
-
-
-
     console.log('boxObject inside calculateRemainingSpace', boxObject)
 
     let totalPoints = boxObject.qty * boxObject.points;
@@ -61,12 +76,7 @@ class MainPage extends Component {
     return [remainingPoints, remainingVolume];
   }
 
-  updateBox (boxObject) {
 
-    console.log('boxObject:', boxObject)
-    let remainingPoints = this.calculateRemainingSpace(boxObject);
-    console.log('remainingPoints', remainingPoints);
-  }
 
   render() {
     return (
