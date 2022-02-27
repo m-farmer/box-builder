@@ -10,11 +10,11 @@ Set up the code and run it on localhost:3000:
 [ ] Drop-down menu with Small, Medium, and Large Subscription Options
 [x] List of available products with details
 [x] Product details include + / - buttons for quantity
-[ ] A Save Button (currently does nothing)
+[x] A Save Button (currently does nothing)
 
 # User Experience:
 [x] User must select a subscription before choosing items for the box
-[ ] User can select one option from the drop-down menu (and can change their minds later)
+[x] User can select one option from the drop-down menu (and can change their minds later)
 [ ] User will see a maximum displayed for both volume and value once they make a selection (?)
 [x] User can select products by clicking the + / - buttons
 
