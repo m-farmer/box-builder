@@ -1,12 +1,12 @@
 Set up the code and run it on localhost:3000:
 
-`npm install`
+`npm install` <br />
 `npm start`
 
 
 # MVP:
 
-# Design:
+## Design:
 [ ] Drop-down menu with Small, Medium, and Large Subscription Options <br />
 [x] List of available products with details <br />
 [x] Product details include + / - buttons for quantity <br />
