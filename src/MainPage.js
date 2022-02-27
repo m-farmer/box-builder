@@ -114,7 +114,9 @@ class MainPage extends Component {
   render() {
     return (
       <div className="App">
-        <section className="navbar"><h2>This is a navbar placeholder</h2></section>
+        <section className="navbar">
+          <img src="https://splendidspoon.com/static-content/images/ss-logo-symbol-blue@2x.png" alt="splendidSpoon logo" />
+        </section>
         <section className="subscriptionOptions">
           <div className="columns">
             <Dropdown

@@ -1,5 +1,25 @@
 
-.subscribe-button button{
-  width: 33%;
+
+.subscribe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 200px;
+}
+
+.subscribe-label {
+  display: flex;
+  justify-content: space-evenly;
+  /* flex-direction: row; */
+  /* justify-content: flex-end; */
+  /* text-align: right; */
+
+
+}
+select.dropdown-buttons {
+
+  width: 20%;
   font-size: 2rem;
+  background-color: #E87425;;
+  color: white;
 }

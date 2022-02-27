@@ -1,11 +1,11 @@
 * {
   box-sizing: border-box;
+  font-family: "Gotham",Arial,sans-serif;
   /* overflow: hidden; */
 }
 .App {
   text-align: center;
   min-height: 100vh;
-  background-color: #c9e3ac;
   overflow: auto;
 }
 
@@ -13,24 +13,23 @@
 .subscriptionOptions {
   display: flex;
   flex-direction: row;
-  /* align-items: flex-start; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
 div.columns {
   flex: 1;
-  background-color: white;
-  opacity: 0.2;
-  color: forestgreen;
+
+  /* opacity: 0.2; */
+  color:  #07849D;
   padding: 1rem;
 }
 
 
 .navbar {
-  flex: 1;
-  background-color: forestgreen;
-  padding: 0.5rem;
+  background-color: #EFEBE0;
+  padding: 1rem;
+  display: flex;
 }
 
 .save-feature {

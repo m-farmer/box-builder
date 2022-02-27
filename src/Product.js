@@ -57,9 +57,9 @@ class Product extends Component {
     return (
       <div className="Product">
         <h2>{name}</h2>
-        <h3>{description}</h3>
-        <h3>Volume: {volume} in³</h3>
-        <h3>{points} points</h3>
+        <p>{description}</p>
+        <p className="product-specs">Volume: {volume} in³</p>
+        <p className="product-specs">{points} points</p>
         <div className="edit-product">
           <button
           className="value-button"

@@ -1,11 +1,10 @@
 h3 {
-  margin: 20px;
+  margin: 10px;
 }
 
 .Product {
-  padding: 2rem;
+  padding: 1.2rem;
   background-color: white;
-  border: 1px solid pink;
   width: 400px;
   height: 600px;
   font-size: 1.5rem;
@@ -33,6 +32,13 @@ h3 {
   cursor: pointer;
 }
 
+p {
+  font-size: 1.1em;
+}
+p.product-specs {
+  font-weight: bold;
+}
+
 #number {
   text-align: center;
   margin: 0px;
@@ -57,7 +63,7 @@ h3 {
 .value-button .tooltiptext {
   display: flex;
   visibility: hidden;
-  background-color: seagreen;
+  background-color:  #07849D;
   color: #fff;
   text-align: center;
   border-radius: 6px;

@@ -28,7 +28,6 @@ class Dropdown extends Component {
 
     let options = subscription.map((sub, idx) => (
       <option value={idx} label={sub.name} >
-
         {sub.name}
       </option>
     ));
@@ -38,25 +37,15 @@ class Dropdown extends Component {
 
     return (
       <section className="Dropdown">
-        <div className="subscribe-button">
-          <h1>Select a subscription</h1>
+        <div className="subscribe">
           {/* using index to determine subscription selection */}
-              <label>
+              <label className="subscribe-label">
               Select a subscription:
-              <select onChange={this.handleClickSubscription}>
-              <option selected disabled />
+              <select className="dropdown-buttons" onChange={this.handleClickSubscription}>
+                <option selected disabled />
                 {options}
               </select>
               </label>
-
-
-          {/* {this.state.subscription.map((sub, idx) =>
-         <button onClick={this.handleClickSubscription}
-          value={sub.name}
-          key={sub.id}
-          id={idx}
-         >
-         {sub.name}</button>)} */}
         </div>
       </section>
     );
