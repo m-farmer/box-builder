@@ -9,7 +9,8 @@ const BOX_API = "https://mystifying-spence-dc3bda.netlify.app/build-a-box/";
 
 class MainPage extends Component {
 
-  constructor(props) {
+  constructor() {
+    // review: why no props, why super?
     super();
     this.state = {
       remainingPoints: 0,
@@ -137,6 +138,9 @@ class MainPage extends Component {
           remainingVolume={this.state.remainingVolume}
           mySubscription={this.state.mySubscription}
          />
+        </section>
+        <section className="save-feature">
+          <button id="save-button">Save</button>
         </section>
       </div>
     );

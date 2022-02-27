@@ -4,18 +4,8 @@ import Product from "./Product";
 
 class ProductList extends Component {
 
-  // constructor(props) {
-  //   super(props);
-
-  //   this.updateBoxClick = this.updateBoxClick.bind(this);
-  // }
-
-  // updateBoxClick (boxObject) {
-
-  // }
-
   render() {
-    let { products, remainingPoints, remainingVolume, mySubscription } = this.props;
+    const { products, remainingPoints, remainingVolume, mySubscription } = this.props;
 
     const categories = [
       ...new Set(products.map((product) => product.category.name)),
@@ -24,8 +14,6 @@ class ProductList extends Component {
     const groupByCategory = categories.map((category) =>
       products.filter((item) => item.category.name === category)
     );
-
-    // note: objects are not valid as React children
 
     return (
       <div className="ProductList">
