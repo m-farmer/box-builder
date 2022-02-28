@@ -1,6 +1,6 @@
 .ProductList {
-  background-color: orange;
   padding: 2rem;
+  box-shadow: 1px rgba(0,0,0,.5);
 }
 
 h1 {

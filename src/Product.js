@@ -56,10 +56,10 @@ class Product extends Component {
     console.log('remainingVolume and remainingPoints inside Product', remainingVolume, remainingPoints)
     return (
       <div className="Product">
-        <h2>{name}</h2>
-        <p>{description}</p>
-        <p className="product-specs">Volume: {volume} in³</p>
-        <p className="product-specs">{points} points</p>
+        <h2 className="product-title">{name}</h2>
+        <p className="product-description">{description}</p>
+        <p className="product-specs">VOLUME: {volume} in³  |  POINTS: {points}</p>
+        {/* <p className="product-specs">{points} points</p> */}
         <div className="edit-product">
           <button
           className="value-button"

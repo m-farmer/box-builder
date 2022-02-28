@@ -122,6 +122,7 @@ class MainPage extends Component {
             <Dropdown
               subscription={this.state.subscriptions}
               clickSubscription={this.clickSubscription}
+              mySubscription={this.state.mySubscription}
             />
           </div>
           <div className="columns">

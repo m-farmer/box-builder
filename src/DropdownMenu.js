@@ -4,9 +4,7 @@ import "./styles/DropdownMenu.css";
 class Dropdown extends Component {
   constructor() {
     super();
-    // this.state = {
-    //   value: "Choose Plan"
-    // }
+
     // we need to bind so that the method refers to the context of this component
 
     this.handleClickSubscription = this.handleClickSubscription.bind(this);
@@ -24,7 +22,7 @@ class Dropdown extends Component {
 
   render() {
 
-    const { subscription } = this.props;
+    const { subscription, mySubscription } = this.props;
 
     let options = subscription.map((sub, idx) => (
       <option value={idx} label={sub.name} >
@@ -32,20 +30,24 @@ class Dropdown extends Component {
       </option>
     ));
 
-
-
-
     return (
       <section className="Dropdown">
         <div className="subscribe">
           {/* using index to determine subscription selection */}
-              <label className="subscribe-label">
-              Select a subscription:
+
+            {/* mySubscription values should go INSIDE the buttons. */}
+             {/* mySubscription values should go INSIDE the buttons. */}
+              {/* mySubscription values should go INSIDE the buttons. */}
+               {/* mySubscription values should go INSIDE the buttons. */}
+
+             <h4>SELECT A SUBSCRIPTION:</h4>
               <select className="dropdown-buttons" onChange={this.handleClickSubscription}>
                 <option selected disabled />
                 {options}
               </select>
-              </label>
+              {mySubscription.maxValue &&
+              <p className="max-box-size-products">Maximum volume: {mySubscription.maxVolume} in³ <br/>
+                 Maximum points: {mySubscription.maxValue}</p>}
         </div>
       </section>
     );

@@ -3,14 +3,27 @@ h3 {
 }
 
 .Product {
-  padding: 1.2rem;
+  padding: 1.3rem;
   background-color: white;
-  width: 400px;
-  height: 600px;
+  width: 500px;
+  height: 530px;
   font-size: 1.5rem;
   display: flex;
   flex-direction: column;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  /* box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; */
 
+}
+
+h2.product-title {
+  color: #E87425;
+  margin-bottom: 5px;
+}
+
+p.product-description {
+  font-size: 1.2em;
+  padding: 0 2rem;
+  font-weight: lighter;
 }
 
 .edit-product {
@@ -32,11 +45,10 @@ h3 {
   cursor: pointer;
 }
 
-p {
-  font-size: 1.1em;
-}
 p.product-specs {
-  font-weight: bold;
+  font-size: 1.1em;
+  font-weight: lighter;
+  word-spacing: 5px;
 }
 
 #number {

@@ -19,11 +19,11 @@ class BoxContents extends Component {
     return (
       <div>
         {remainingVolume < 0 || remainingPoints < 0 ?
-        <h1>Please remove an item!</h1>
+        <h4>Please remove an item!</h4>
         :
-        <h1>In the box:</h1>
+        <h4>IN THE BOX:</h4>
         }
-        {stock.map(item => <div>{item}</div>)}
+        {stock.map(item => <p>{item}</p>)}
 
       </div>
 
