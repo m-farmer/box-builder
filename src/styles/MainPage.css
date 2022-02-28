@@ -9,47 +9,103 @@
   overflow: auto;
 }
 
-
-.subscriptionOptions {
-  display: flex;
-  flex-direction: row;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-div.columns {
-  flex: 1;
-
-  /* opacity: 0.2; */
-  color:  #07849D;
-  padding: 1rem;
-}
-
-
 .navbar {
   /* background-color: #EFEBE0; */
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
-  box-shadow: 1px 2px 3px rgba(0,0,0,.5);
+  border-bottom: 1px solid lightgray;
 }
 
-.save-feature {
+/* div.columns {
 
-  padding: 4rem;
+  display: block;
+  color:  #07849D;
+  padding: 1rem;
+} */
 
-
+.subscription-product-body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+  align-items: space-between;
 }
+
+.subscription-options {
+/*
+  display: flex; */
+  justify-content: space-between;
+  /* display: block; */
+  text-align: left;
+  /* padding: 0 100rem 0 8rem; */
+}
+
+
+
+
+
+
+
 
 #save-button {
-  background-color: lightseagreen;
+  background-color: #E87425;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 100px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 2.5rem;
   margin: 4px 2px;
   cursor: pointer;
-  border-radius: 3px;
+  border-radius: 8px;
+  margin: 6rem;
+}
+
+
+.step-one-two {
+  /* display: flex;
+  justify-content: space-between; */
+  display: block;
+
+  padding-top: 2rem;
+  text-align: left;
+  padding-left: 2rem;
+
+
+}
+
+.step-one-two h4 {
+  color:  #07849D;
+  font-size: 2rem;
+}
+
+.number-circle {
+  background-color: #A4D65E;
+  /* border-radius 50% makes it a circle */
+  border-radius: 50%;
+  /* all in a line together with inline-block */
+  display: inline-block;
+  width: 100px;
+  height: 100px;
+  padding-top: 0.5em;
+  text-align: center;
+  font-weight: bold;
+  font-size: 3em;
+  /* position: absolute; */
+  /* left: 40px; */
+}
+
+#select-subscription-box-container {
+  width: 30vw;
+}
+
+@media only screen and (max-width: 912px) {
+  #select-subscription-box-container {
+    width: 100vw;
+  }
+}
+#choose-meals-container {
+  border-left: 1px solid lightgray;
+  width: 70vw;
+  display: inline-block;
 }

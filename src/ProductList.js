@@ -16,7 +16,9 @@ class ProductList extends Component {
     );
 
     return (
-      <div className="ProductList">
+      <div>
+        {/* <div className="step-two-prompt">2</div> */}
+        {/* <h4> CHOOSE YOUR MEALS ⬇</h4> */}
         {groupByCategory.map((category, idx) => (
           <div>
             <h1>{categories[idx]}</h1>

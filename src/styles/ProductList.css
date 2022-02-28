@@ -1,7 +1,4 @@
-.ProductList {
-  padding: 2rem;
-  box-shadow: 1px rgba(0,0,0,.5);
-}
+
 
 h1 {
   font-size: 4rem;
@@ -9,8 +6,10 @@ h1 {
 
 
 .ProductList-items {
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
 
 }
+

@@ -33,14 +33,15 @@ class Dropdown extends Component {
         <div className="subscribe">
           {/* using index to determine subscription selection */}
 
-             <h4>SELECT A SUBSCRIPTION:</h4>
+
+
               <select className="dropdown-buttons" onChange={this.handleClickSubscription}>
                 <option selected disabled />
                 {options}
               </select>
-              {mySubscription.maxValue &&
+              {/* {mySubscription.maxValue &&
               <p className="max-box-size-products">Maximum volume: {mySubscription.maxVolume} in³ <br/>
-                 Maximum points: {mySubscription.maxValue}</p>}
+                 Maximum points: {mySubscription.maxValue}</p>} */}
         </div>
       </section>
     );

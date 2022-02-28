@@ -115,25 +115,36 @@ class MainPage extends Component {
     return (
       <div className="App">
         <section className="navbar">
-          <img src="https://splendidspoon.com/static-content/images/ss-logo-symbol-blue@2x.png" alt="splendidSpoon logo" />
+          <img src="https://splendidspoon.com/static-content/images/ss-logo-symbol-blue@2x.png" alt="Splendid Spoon logo" />
         </section>
-        <section className="subscriptionOptions">
-          <div className="columns">
+        <div className="subscription-product-body">
+
+        <section id="select-subscription-box-container">
+        <div className="step-one-two">
+          <div className="number-circle" >1</div>
+          <h4>SELECT A SUBSCRIPTION</h4>
+        </div>
+        <div className="subscription-options">
+
             <Dropdown
               subscription={this.state.subscriptions}
               clickSubscription={this.clickSubscription}
               mySubscription={this.state.mySubscription}
             />
-          </div>
-          <div className="columns">
             <BoxContents
               box={this.state.box}
               remainingPoints={this.state.remainingPoints}
               remainingVolume={this.state.remainingVolume}
             />
-          </div>
+
+        </div>
         </section>
-        <section>
+        <section id="choose-meals-container">
+          <div className="step-one-two">
+            <div className="number-circle" >2</div>
+            <h4>CHOOSE YOUR MEALS</h4>
+          </div>
+
          <ProductList
           products={this.state.products}
           updateBox={this.updateBox}
@@ -141,10 +152,11 @@ class MainPage extends Component {
           remainingVolume={this.state.remainingVolume}
           mySubscription={this.state.mySubscription}
          />
-        </section>
-        <section className="save-feature">
+
           <button id="save-button">Save</button>
+
         </section>
+        </div>
       </div>
     );
   }

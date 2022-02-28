@@ -1,22 +1,24 @@
 
-.subscribe {
+/* .subscribe {
   height: 200px;
-}
+  display: flex;
+} */
 
 
 select.dropdown-buttons {
-  width: 22%;
+ width: 75%;
   font-size: 2rem;
   color:  #E87425;
   padding: 15px;
   text-align: center;
+  margin-left: 2rem;
 }
 
-.max-box-size-products {
+/* .max-box-size-products {
   font-weight: lighter;
   color: #7E4966;
   font-size: 2rem;
-  /* text-align: left;
-  padding-left: 15rem; */
+
   padding-top: 2rem;
-}
+} */
+
