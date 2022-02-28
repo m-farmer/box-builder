@@ -25,20 +25,13 @@ class Dropdown extends Component {
     const { subscription, mySubscription } = this.props;
 
     let options = subscription.map((sub, idx) => (
-      <option value={idx} label={sub.name} >
-        {sub.name}
-      </option>
+      <option value={idx} label={`${sub.name}  - ${sub.maxVolume} in³ - ${sub.maxValue} points`} />
     ));
 
     return (
       <section className="Dropdown">
         <div className="subscribe">
           {/* using index to determine subscription selection */}
-
-            {/* mySubscription values should go INSIDE the buttons. */}
-             {/* mySubscription values should go INSIDE the buttons. */}
-              {/* mySubscription values should go INSIDE the buttons. */}
-               {/* mySubscription values should go INSIDE the buttons. */}
 
              <h4>SELECT A SUBSCRIPTION:</h4>
               <select className="dropdown-buttons" onChange={this.handleClickSubscription}>
