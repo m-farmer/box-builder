@@ -3,13 +3,11 @@ import "./styles/MainPage.css";
 import Dropdown from "./DropdownMenu";
 import BoxContents from "./BoxContents";
 import ProductList from "./ProductList";
-import axios from 'axios';
+import axios from "axios";
 
 const BOX_API = "https://mystifying-spence-dc3bda.netlify.app/build-a-box/";
 
-
 class MainPage extends Component {
-
   constructor() {
     // review: why no props, why super?
     super();
@@ -19,12 +17,11 @@ class MainPage extends Component {
       subscriptions: [],
       products: [],
       mySubscription: {},
-      box: {}
-    }
+      box: {},
+    };
     this.clickSubscription = this.clickSubscription.bind(this);
     this.updateBox = this.updateBox.bind(this);
   }
-
 
   // PUT THE TESTING FUNCTIONS IN!!!
 
@@ -34,46 +31,53 @@ class MainPage extends Component {
     let subscriptionResponse = await axios.get(`${BOX_API}subscriptions.json`);
     let productsResponse = await axios.get(`${BOX_API}products.json`);
 
-    this.setState({
-      subscriptions: subscriptionResponse.data.subscriptions,
-      products: productsResponse.data.products,
-    }, () => this.createBox(this.state.products))
-
+    this.setState(
+      {
+        subscriptions: subscriptionResponse.data.subscriptions,
+        products: productsResponse.data.products,
+      },
+      () => this.createBox(this.state.products)
+    );
   }
 
-  clickSubscription (subscriptionChoice) {
+  clickSubscription(subscriptionChoice) {
     // value passed in is index of subscription (from subscriptions array) based on button click in DropdownMenu
     // this is working properly. console.log inside render method to see.
     let chosenSubscription = this.state.subscriptions[subscriptionChoice];
-    this.setState ({
-      mySubscription: chosenSubscription
-    }, () => this.calculateRemainingSpace());
+    this.setState(
+      {
+        mySubscription: chosenSubscription,
+      },
+      () => this.calculateRemainingSpace()
+    );
   }
 
   createBox(products) {
     // once the data is retrieved from the API, the state of the box is initialized to an object where the quantity of each product is 0
     let newBox = {};
-    products.forEach(item => {
+    products.forEach((item) => {
       newBox[item.id] = {
         qty: 0,
         volume: item.volume,
         points: item.points,
-        name: item.name
+        name: item.name,
       };
-
-    })
+    });
     this.setState({ box: newBox });
   }
 
-  updateBox (id, qty) {
+  updateBox(id, qty) {
     // id and qty are passed up from the Product component. the state of the box is updated to reflect the new quantity based on the id
 
-    this.setState({
-      box: {
-        ...this.state.box,
-        [id]: {...this.state.box[id], qty: qty}
-      }
-    }, () => this.calculateRemainingSpace())
+    this.setState(
+      {
+        box: {
+          ...this.state.box,
+          [id]: { ...this.state.box[id], qty: qty },
+        },
+      },
+      () => this.calculateRemainingSpace()
+    );
 
     /*
     from React docs: https://reactjs.org/docs/react-component.html#setstate
@@ -92,71 +96,68 @@ class MainPage extends Component {
     //   }
     //   //componentDidUpdate?
     // }), () => this.calculateRemainingSpace())
-
   }
 
   // called after the subscription is chosen AND whenever an item is added to the box.
   calculateRemainingSpace() {
-
-    let totalVol = 0, totalPoints = 0;
+    let totalVol = 0,
+      totalPoints = 0;
     for (let product in this.state.box) {
       totalVol += this.state.box[product].volume * this.state.box[product].qty;
-      totalPoints += this.state.box[product].points * this.state.box[product].qty;
+      totalPoints +=
+        this.state.box[product].points * this.state.box[product].qty;
     }
 
     this.setState({
       remainingVolume: this.state.mySubscription.maxVolume - totalVol,
-      remainingPoints: this.state.mySubscription.maxValue - totalPoints
-    })
+      remainingPoints: this.state.mySubscription.maxValue - totalPoints,
+    });
   }
-
-
 
   render() {
     return (
       <div className="App">
         <section className="navbar">
-          <img src="https://splendidspoon.com/static-content/images/ss-logo-symbol-blue@2x.png" alt="Splendid Spoon logo" />
+          <img
+            src="https://splendidspoon.com/static-content/images/ss-logo-symbol-blue@2x.png"
+            alt="Splendid Spoon logo"
+          />
         </section>
         <div className="subscription-product-body">
+          <section id="select-subscription-box-container">
+            <div className="step-one-two">
+              <div className="number-circle">1</div>
+              <h4>SELECT A SUBSCRIPTION</h4>
+            </div>
+            <div className="subscription-options">
+              <Dropdown
+                subscription={this.state.subscriptions}
+                clickSubscription={this.clickSubscription}
+                mySubscription={this.state.mySubscription}
+              />
+              <BoxContents
+                box={this.state.box}
+                remainingPoints={this.state.remainingPoints}
+                remainingVolume={this.state.remainingVolume}
+              />
+            </div>
+          </section>
+          <section id="choose-meals-container">
+            <div className="step-one-two">
+              <div className="number-circle">2</div>
+              <h4>CHOOSE YOUR MEALS</h4>
+            </div>
 
-        <section id="select-subscription-box-container">
-        <div className="step-one-two step-one-stationary">
-          <div className="number-circle" >1</div>
-          <h4>SELECT A SUBSCRIPTION</h4>
-        </div>
-        <div className="subscription-options">
-
-            <Dropdown
-              subscription={this.state.subscriptions}
-              clickSubscription={this.clickSubscription}
-              mySubscription={this.state.mySubscription}
-            />
-            <BoxContents
-              box={this.state.box}
+            <ProductList
+              products={this.state.products}
+              updateBox={this.updateBox}
               remainingPoints={this.state.remainingPoints}
               remainingVolume={this.state.remainingVolume}
+              mySubscription={this.state.mySubscription}
             />
 
-        </div>
-        </section>
-        <section id="choose-meals-container">
-          <div className="step-one-two">
-            <div className="number-circle" >2</div>
-            <h4>CHOOSE YOUR MEALS</h4>
-          </div>
-
-         <ProductList
-          products={this.state.products}
-          updateBox={this.updateBox}
-          remainingPoints={this.state.remainingPoints}
-          remainingVolume={this.state.remainingVolume}
-          mySubscription={this.state.mySubscription}
-         />
-
-          <button id="save-button">Save</button>
-
-        </section>
+            <button id="save-button">Save</button>
+          </section>
         </div>
       </div>
     );

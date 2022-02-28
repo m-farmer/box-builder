@@ -19,12 +19,6 @@
 }
 
 
-.subscription-product-body {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100vw;
-  align-items: space-between;
-}
 
 .subscription-options {
   /* background-color: #cae8ea; */
@@ -70,12 +64,6 @@
 
 
 
-/* @media only screen and (min-width: 1200px) {
-  .step-one-two.step-one-stationary {
-    position: fixed;
-  }
-} */
-
 .step-one-two h4 {
   color:  #07849D;
   font-size: 2rem;
@@ -104,11 +92,14 @@
   width: 30vw;
   position: fixed;
 
+
 }
 
 @media only screen and (max-width: 1200px) {
-  #select-subscription-box-container {
+  .subscription-product-body #select-subscription-box-container {
     width: 100vw;
+    position: relative;
+
   }
 }
 .subscription-product-body #choose-meals-container {
@@ -118,4 +109,13 @@
   padding-right: 1.5rem;
   margin-left: 30vw;
   /* background-color: #7e4966; */
+}
+
+@media only screen and (max-width: 1200px) {
+  .subscription-product-body #choose-meals-container {
+   margin: 0;
+   padding: 0;
+   width: 100vw;
+
+  }
 }
