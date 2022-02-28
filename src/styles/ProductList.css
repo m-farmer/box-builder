@@ -1,7 +1,7 @@
 
-
 h1 {
   font-size: 4rem;
+  color: #7e4966;
 }
 
 
@@ -10,6 +10,14 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+
+}
+
+.product-headers {
+  /* background-color: #7e4966; */
+  /* opacity: 0.5; */
+  /* color: white; */
+  /* color: #7e4966; */
 
 }
 

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './styles/BoxContents.css'
 
 class BoxContents extends Component {
 
@@ -17,13 +18,20 @@ class BoxContents extends Component {
     // in case the user changes their mind and switches to a smaller subscription, they'll have to take stuff out of the box.
 
     return (
-      <div>
+      <div id="box-container">
         {remainingVolume < 0 || remainingPoints < 0 ?
-        <h4>Please remove an item!</h4>
+        <h4 className="box-error">Please remove an item!</h4>
         :
-        <h4>IN THE BOX:</h4>
+        <h4>YOUR MEALS</h4>
         }
-        {stock.map(item => <p>{item}</p>)}
+        <div className="available-space">
+        {(remainingVolume > 0 && remainingPoints > 0) && <p>Available volume: {remainingVolume} <br /> Available points: {remainingPoints} </p> }
+
+
+        </div>
+
+        {stock.map(item => <p className="box-item">{item}</p>)}
+
 
       </div>
 

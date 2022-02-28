@@ -1,0 +1,37 @@
+#box-container {
+  margin: 2.8rem;
+  padding: 2rem;
+}
+
+#box-container h4 {
+  color: #E87425;
+  font-size: 2rem;
+  padding: 2rem;
+  border-bottom: 6px solid #cae8ea;
+  border-top: 6px solid #cae8ea;
+  margin-bottom: 4rem;
+}
+
+.box-item {
+  font-size: 1.7rem;
+  color: gray;
+  text-align: left;
+}
+
+.available-space {
+
+/*
+  display: flex;
+  flex-direction: row; */
+  text-align: left;
+}
+
+.available-space p {
+  color: #E87425;
+  font-size: 2rem;
+
+}
+
+#box-container .box-error {
+  color: red;
+}

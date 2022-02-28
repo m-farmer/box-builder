@@ -11,17 +11,12 @@
 
 .navbar {
   /* background-color: #EFEBE0; */
+  background-color: #cae8ea;
   padding: 2rem;
   display: flex;
   border-bottom: 1px solid lightgray;
 }
 
-/* div.columns {
-
-  display: block;
-  color:  #07849D;
-  padding: 1rem;
-} */
 
 .subscription-product-body {
   display: flex;
@@ -31,19 +26,16 @@
 }
 
 .subscription-options {
+  /* background-color: #cae8ea; */
+  height: 55rem;
+  padding-top: 2.5rem;
 /*
   display: flex; */
-  justify-content: space-between;
+  /* justify-content: space-between; */
   /* display: block; */
-  text-align: left;
+  /* text-align: left; */
   /* padding: 0 100rem 0 8rem; */
 }
-
-
-
-
-
-
 
 
 #save-button {
@@ -63,13 +55,14 @@
 
 
 .step-one-two {
-  /* display: flex;
-  justify-content: space-between; */
-  display: block;
+  display: flex;
+  /* justify-content: space-between; */
+  /* display: inline-block; */
 
   padding-top: 2rem;
   text-align: left;
   padding-left: 2rem;
+
 
 
 }
@@ -77,6 +70,7 @@
 .step-one-two h4 {
   color:  #07849D;
   font-size: 2rem;
+  padding-left: 20px;
 }
 
 .number-circle {
@@ -93,13 +87,15 @@
   font-size: 3em;
   /* position: absolute; */
   /* left: 40px; */
+  /* prevents squished look */
+  flex: none;
 }
 
 #select-subscription-box-container {
   width: 30vw;
 }
 
-@media only screen and (max-width: 912px) {
+@media only screen and (max-width: 1200px) {
   #select-subscription-box-container {
     width: 100vw;
   }
@@ -108,4 +104,6 @@
   border-left: 1px solid lightgray;
   width: 70vw;
   display: inline-block;
+  padding-right: 1.5rem;
+  /* background-color: #7e4966; */
 }
