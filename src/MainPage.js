@@ -7,6 +7,7 @@ import axios from 'axios';
 
 const BOX_API = "https://mystifying-spence-dc3bda.netlify.app/build-a-box/";
 
+
 class MainPage extends Component {
 
   constructor() {
@@ -61,7 +62,7 @@ class MainPage extends Component {
       };
 
     })
-    this.setState({ box: newBox })
+    this.setState({ box: newBox });
   }
 
   updateBox (id, qty) {
@@ -120,7 +121,7 @@ class MainPage extends Component {
         <div className="subscription-product-body">
 
         <section id="select-subscription-box-container">
-        <div className="step-one-two">
+        <div className="step-one-two step-one-stationary">
           <div className="number-circle" >1</div>
           <h4>SELECT A SUBSCRIPTION</h4>
         </div>

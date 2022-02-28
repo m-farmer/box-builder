@@ -1,20 +1,27 @@
 import React, { Component } from "react";
-import "./styles/Product.css"
+import "./styles/Product.css";
+
+
 
 class Product extends Component {
 
+
   // a bit like having a react form, so making it stateful
 
-  constructor(props) {
-    // don't need props inside super if we're not using props inside the constructor
+  constructor() {
     super();
     this.state = {
-      quantity: 0
+      quantity: 0,
+      image: ''
     }
     this.handleDecreaseValue = this.handleDecreaseValue.bind(this);
     this.handleIncreaseValue = this.handleIncreaseValue.bind(this);
   }
 
+
+  componentDidMount() {
+    this.setState({ image: this.props.image})
+  }
 
   handleUpdateBox (quantity) {
   let id = this.props.id, qty = quantity;
@@ -42,20 +49,23 @@ class Product extends Component {
       () => this.handleUpdateBox(this.state.quantity));
   }
 
+
   // import function to reset everything to 0 if a new box size is chosen
 
   // once a subscription is chosen, remainingVolume and remainingValue will no longer be 0 and things can be added to the box.
   render() {
+
     let {name, description, points, volume, remainingVolume, remainingPoints, mySubscription} = this.props;
 
     let isDeactivated = remainingVolume < volume || remainingPoints < points;
     let message = !mySubscription.name ? "Please choose a subscription" : "Too big for the box!"
 
-    // some class={isDeactivated && message}
 
-    console.log('remainingVolume and remainingPoints inside Product', remainingVolume, remainingPoints)
+
     return (
       <div className="Product">
+      <img src ={`/fruitImages/${this.state.image}`} alt="fruit"/>
+
         <h2 className="product-title">{name}</h2>
         <p className="product-description">{description}</p>
         <p className="product-specs">VOLUME: {volume} in³  |  POINTS: {points}</p>

@@ -15,6 +15,7 @@
   padding: 2rem;
   display: flex;
   border-bottom: 1px solid lightgray;
+
 }
 
 
@@ -67,10 +68,18 @@
 
 }
 
+
+
+/* @media only screen and (min-width: 1200px) {
+  .step-one-two.step-one-stationary {
+    position: fixed;
+  }
+} */
+
 .step-one-two h4 {
   color:  #07849D;
   font-size: 2rem;
-  padding-left: 20px;
+  padding-left: 40px;
 }
 
 .number-circle {
@@ -91,8 +100,10 @@
   flex: none;
 }
 
-#select-subscription-box-container {
+.subscription-product-body #select-subscription-box-container {
   width: 30vw;
+  position: fixed;
+
 }
 
 @media only screen and (max-width: 1200px) {
@@ -100,10 +111,11 @@
     width: 100vw;
   }
 }
-#choose-meals-container {
+.subscription-product-body #choose-meals-container {
   border-left: 1px solid lightgray;
   width: 70vw;
   display: inline-block;
   padding-right: 1.5rem;
+  margin-left: 30vw;
   /* background-color: #7e4966; */
 }

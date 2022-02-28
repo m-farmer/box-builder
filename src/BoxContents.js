@@ -25,7 +25,7 @@ class BoxContents extends Component {
         <h4>YOUR MEALS</h4>
         }
         <div className="available-space">
-        {(remainingVolume > 0 && remainingPoints > 0) && <p>Available volume: {remainingVolume} <br /> Available points: {remainingPoints} </p> }
+        {(remainingVolume > 0 && remainingPoints > 0) && <p>Available volume: {remainingVolume} in³ <br /> Available points: {remainingPoints} </p> }
 
 
         </div>

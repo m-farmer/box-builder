@@ -22,7 +22,7 @@ class Dropdown extends Component {
 
   render() {
 
-    const { subscription, mySubscription } = this.props;
+    const { subscription } = this.props;
 
     let options = subscription.map((sub, idx) => (
       <option value={idx} label={`${sub.name}  - ${sub.maxVolume} in³ - ${sub.maxValue} points`} />
@@ -36,12 +36,9 @@ class Dropdown extends Component {
 
 
               <select className="dropdown-buttons" onChange={this.handleClickSubscription}>
-                <option selected disabled />
+                <option selected disabled >Choose one</option>
                 {options}
               </select>
-              {/* {mySubscription.maxValue &&
-              <p className="max-box-size-products">Maximum volume: {mySubscription.maxVolume} in³ <br/>
-                 Maximum points: {mySubscription.maxValue}</p>} */}
         </div>
       </section>
     );

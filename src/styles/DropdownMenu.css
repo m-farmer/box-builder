@@ -1,10 +1,4 @@
 
-/* .subscribe {
-  height: 200px;
-  display: flex;
-} */
-
-
 select.dropdown-buttons {
  width: 85%;
   font-size: 2rem;
@@ -13,12 +7,4 @@ select.dropdown-buttons {
   text-align: center;
   /* margin-left: 2rem; */
 }
-
-/* .max-box-size-products {
-  font-weight: lighter;
-  color: #7E4966;
-  font-size: 2rem;
-
-  padding-top: 2rem;
-} */
 
