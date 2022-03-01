@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "./styles/MainPage.css";
-import Dropdown from "./DropdownMenu";
+import "../styles/MainPage.css";
+import DropdownMenu from "./DropdownMenu";
 import BoxContents from "./BoxContents";
 import ProductList from "./ProductList";
 import axios from "axios";
@@ -28,9 +28,15 @@ class MainPage extends Component {
   // several methods are triggered as the result of an event but NOT DIRECTLY
   // explain WHY using componentDidMount and WHY I'm making an AJAX request here
   async componentDidMount() {
-    let subscriptionResponse = await axios.get(`${BOX_API}subscriptions.json`);
-    let productsResponse = await axios.get(`${BOX_API}products.json`);
 
+    try {
+      const subscriptionResponse = await axios.get(`${BOX_API}subscriptions.json`);
+
+    if (!subscriptionResponse ) throw Error(subscriptionResponse.statusText);
+
+    const productsResponse = await axios.get(`${BOX_API}products.json`);
+
+    if (!productsResponse) throw Error(productsResponse.statusText);
     this.setState(
       {
         subscriptions: subscriptionResponse.data.subscriptions,
@@ -38,6 +44,12 @@ class MainPage extends Component {
       },
       () => this.createBox(this.state.products)
     );
+    } catch (e) {
+      console.error(e);
+    }
+
+
+
   }
 
   clickSubscription(subscriptionChoice) {
@@ -130,7 +142,7 @@ class MainPage extends Component {
               <h4>SELECT A SUBSCRIPTION</h4>
             </div>
             <div className="subscription-options">
-              <Dropdown
+              <DropdownMenu
                 subscription={this.state.subscriptions}
                 clickSubscription={this.clickSubscription}
                 mySubscription={this.state.mySubscription}

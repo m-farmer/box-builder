@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.css';
-import MainPage from './MainPage';
+import MainPage from './components/MainPage';
 
 
 ReactDOM.render(

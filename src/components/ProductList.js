@@ -1,7 +1,14 @@
 import React, { Component } from "react";
-import "./styles/ProductList.css";
+import "../styles/ProductList.css";
 import Product from "./Product";
-import { generateImages } from "./fruits";
+import { generateImages } from "../fruits";
+
+/*
+Reminders that with Class components, we expect Jest to be used to test props and not methods directly.
+make this a functional component??
+
+what's the best way to layout files?? individual folders for each component with its css?
+*/
 
 class ProductList extends Component {
   render() {
@@ -19,10 +26,10 @@ class ProductList extends Component {
     return (
       <div>
         {groupByCategory.map((category, idx) => (
-          <div>
+          <div key={category[idx].id}>
             <h1 className="product-headers">{categories[idx]}</h1>
             <div className="ProductList-items">
-              {category.map((item, idx) => (
+              {category.map((item) => (
                 <Product
                   key={item.id}
                   id={item.id}

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import "./styles/DropdownMenu.css";
+import "../styles/DropdownMenu.css";
 
-class Dropdown extends Component {
+class DropdownMenu extends Component {
   constructor() {
     super();
 
@@ -25,7 +25,7 @@ class Dropdown extends Component {
     const { subscription } = this.props;
 
     let options = subscription.map((sub, idx) => (
-      <option value={idx} label={`${sub.name}  - ${sub.maxVolume} in³ - ${sub.maxValue} points`} />
+      <option key={sub.id} value={idx} label={`${sub.name}  - ${sub.maxVolume} in³ - ${sub.maxValue} points`} />
     ));
 
     return (
@@ -45,4 +45,4 @@ class Dropdown extends Component {
   }
 }
 
-export default Dropdown;
+export default DropdownMenu;

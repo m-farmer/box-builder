@@ -1,21 +1,17 @@
 import React, { Component } from "react";
-import "./styles/Product.css";
+import "../styles/Product.css";
 
 class Product extends Component {
   // a bit like having a react form, so making it stateful
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       quantity: 0,
-      image: "",
+      image: this.props.image,
     };
     this.handleDecreaseValue = this.handleDecreaseValue.bind(this);
     this.handleIncreaseValue = this.handleIncreaseValue.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({ image: this.props.image });
   }
 
   handleUpdateBox(quantity) {
@@ -33,7 +29,7 @@ class Product extends Component {
     // React docs: If the next state depends on the current state, we recommend using the updater function form (currentState => )
     this.state.quantity >= 1 &&
       this.setState(
-        (currentState) => ({ quantity: currentState.quantity - 1 }),
+        currentState => ({ quantity: currentState.quantity - 1 }),
         () => this.handleUpdateBox(this.state.quantity)
       );
   }
@@ -42,7 +38,7 @@ class Product extends Component {
     // using the callback method - passing an anonymous function as a second argument, which then calls handleUpdateBox after state is updated instead of running handleUpdateBox before the updating has finished.
     // this is to avoid the quantity in the box only updating AFTER the user clicks the '+' a SECOND time
     this.setState(
-      (currentState) => ({ quantity: currentState.quantity + 1 }),
+      currentState => ({ quantity: currentState.quantity + 1 }),
       () => this.handleUpdateBox(this.state.quantity)
     );
   }
