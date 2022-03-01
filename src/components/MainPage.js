@@ -9,7 +9,6 @@ const BOX_API = "https://mystifying-spence-dc3bda.netlify.app/build-a-box/";
 
 class MainPage extends Component {
   constructor() {
-    // review: why no props, why super?
     super();
     this.state = {
       remainingPoints: 0,
@@ -23,38 +22,30 @@ class MainPage extends Component {
     this.updateBox = this.updateBox.bind(this);
   }
 
-  // PUT THE TESTING FUNCTIONS IN!!!
-
-  // several methods are triggered as the result of an event but NOT DIRECTLY
-  // explain WHY using componentDidMount and WHY I'm making an AJAX request here
   async componentDidMount() {
-
     try {
-      const subscriptionResponse = await axios.get(`${BOX_API}subscriptions.json`);
+      const subscriptionResponse = await axios.get(
+        `${BOX_API}subscriptions.json`
+      );
 
-    if (!subscriptionResponse ) throw Error(subscriptionResponse.statusText);
+      if (!subscriptionResponse) throw Error(subscriptionResponse.statusText);
 
-    const productsResponse = await axios.get(`${BOX_API}products.json`);
+      const productsResponse = await axios.get(`${BOX_API}products.json`);
 
-    if (!productsResponse) throw Error(productsResponse.statusText);
-    this.setState(
-      {
-        subscriptions: subscriptionResponse.data.subscriptions,
-        products: productsResponse.data.products,
-      },
-      () => this.createBox(this.state.products)
-    );
+      if (!productsResponse) throw Error(productsResponse.statusText);
+      this.setState(
+        {
+          subscriptions: subscriptionResponse.data.subscriptions,
+          products: productsResponse.data.products,
+        },
+        () => this.createBox(this.state.products)
+      );
     } catch (e) {
       console.error(e);
     }
-
-
-
   }
 
   clickSubscription(subscriptionChoice) {
-    // value passed in is index of subscription (from subscriptions array) based on button click in DropdownMenu
-    // this is working properly. console.log inside render method to see.
     let chosenSubscription = this.state.subscriptions[subscriptionChoice];
     this.setState(
       {
@@ -90,24 +81,6 @@ class MainPage extends Component {
       },
       () => this.calculateRemainingSpace()
     );
-
-    /*
-    from React docs: https://reactjs.org/docs/react-component.html#setstate
-    The second parameter to setState() is an optional callback function that will be executed once setState is completed and the component is re-rendered. Generally we recommend using componentDidUpdate() for such logic instead.
-    */
-
-    /*
-    If the next state depends on the current state, we recommend using the updater function form
-    But the next form of state does not depend on the current state. i'm not incrementing anything here, which is why I think it's ok to use the code above ^
-    */
-
-    // this.setState(currentState => ({
-    //   box: {
-    //     ...currentState.box,
-    //     [id]: {...currentState.box[id], qty: qty}
-    //   }
-    //   //componentDidUpdate?
-    // }), () => this.calculateRemainingSpace())
   }
 
   // called after the subscription is chosen AND whenever an item is added to the box.

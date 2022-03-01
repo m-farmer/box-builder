@@ -11,12 +11,12 @@ Set up the code and run it on localhost:3000:
 [x] List of available products with details <br />
 [x] Product details include + / - buttons for quantity <br />
 [x] A Save Button (currently does nothing) <br />
-[ ] Visualization of the Box with a list of products that have been selected (with quantities)
+[x] Visualization of the Box with a list of products that have been selected (with quantities)
 
 ## User Experience:
 [x] User must select a subscription before choosing items for the box <br />
 [x] User can select one option from the drop-down menu (and can change their minds later) <br />
-[ ] User will see remaining volume/points available displayed once they make a selection <br />
+[x] User will see remaining volume/points available displayed once they make a selection <br />
 [x] User can select products by clicking the + / - buttons <br />
 [x] The User can't add more than the max volume/value to the box <br />
 [x] If the User selects a smaller subscription with items already in the box, and they exceed the maximums for the new subscription, they will be prompted to remove items from the box.
@@ -35,6 +35,6 @@ Set up the code and run it on localhost:3000:
 
 ## Extras:
 [x] Warning message when button is deactivated (box is too full or no subscription chosen) <br />
-[ ] Testing scripts <br />
+[x] Testing scripts <br />
 [ ] Box persists in local storage <br />
 [ ] Optimized box - knapsack problem <br />

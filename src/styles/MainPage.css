@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
-  font-family: "Gotham",Arial,sans-serif;
-  /* overflow: hidden; */
+  font-family: "Gotham", Arial, sans-serif;
 }
 .MainPage {
   text-align: center;
@@ -10,31 +9,19 @@
 }
 
 .navbar {
-  /* background-color: #EFEBE0; */
   background-color: #cae8ea;
   padding: 2rem;
   display: flex;
   border-bottom: 1px solid lightgray;
-
 }
-
-
 
 .subscription-options {
-  /* background-color: #cae8ea; */
   height: 55rem;
   padding-top: 2.5rem;
-/*
-  display: flex; */
-  /* justify-content: space-between; */
-  /* display: block; */
-  /* text-align: left; */
-  /* padding: 0 100rem 0 8rem; */
 }
 
-
 #save-button {
-  background-color: #E87425;
+  background-color: #e87425;
   border: none;
   color: white;
   padding: 15px 100px;
@@ -48,33 +35,25 @@
   margin: 6rem;
 }
 
-
 .step-one-two {
   display: flex;
-  /* justify-content: space-between; */
-  /* display: inline-block; */
 
   padding-top: 2rem;
   text-align: left;
   padding-left: 2rem;
-
-
-
 }
 
-
-
 .step-one-two h4 {
-  color:  #07849D;
+  color: #07849d;
   font-size: 2rem;
   padding-left: 40px;
 }
 
 .number-circle {
-  background-color: #A4D65E;
-  /* border-radius 50% makes it a circle */
+  background-color: #a4d65e;
+
   border-radius: 50%;
-  /* all in a line together with inline-block */
+
   display: inline-block;
   width: 100px;
   height: 100px;
@@ -82,24 +61,19 @@
   text-align: center;
   font-weight: bold;
   font-size: 3em;
-  /* position: absolute; */
-  /* left: 40px; */
-  /* prevents squished look */
+
   flex: none;
 }
 
 .subscription-product-body #select-subscription-box-container {
   width: 30vw;
   position: fixed;
-
-
 }
 
 @media only screen and (max-width: 1200px) {
   .subscription-product-body #select-subscription-box-container {
     width: 100vw;
     position: relative;
-
   }
 }
 .subscription-product-body #choose-meals-container {
@@ -108,14 +82,12 @@
   display: inline-block;
   padding-right: 1.5rem;
   margin-left: 30vw;
-  /* background-color: #7e4966; */
 }
 
 @media only screen and (max-width: 1200px) {
   .subscription-product-body #choose-meals-container {
-   margin: 0;
-   padding: 0;
-   width: 100vw;
-
+    margin: 0;
+    padding: 0;
+    width: 100vw;
   }
 }

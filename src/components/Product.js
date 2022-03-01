@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import "../styles/Product.css";
 
 class Product extends Component {
-  // a bit like having a react form, so making it stateful
-
   constructor(props) {
     super(props);
     this.state = {
@@ -21,29 +19,21 @@ class Product extends Component {
     this.props.updateBox(id, qty);
   }
 
-  // setState is asynchronous and may not update the state right away. passing it a callback is a way to access values as soon as the state is updated
-
   handleDecreaseValue() {
     // value must be greater than zero
-
-    // React docs: If the next state depends on the current state, we recommend using the updater function form (currentState => )
     this.state.quantity >= 1 &&
       this.setState(
-        currentState => ({ quantity: currentState.quantity - 1 }),
+        (currentState) => ({ quantity: currentState.quantity - 1 }),
         () => this.handleUpdateBox(this.state.quantity)
       );
   }
 
   handleIncreaseValue() {
-    // using the callback method - passing an anonymous function as a second argument, which then calls handleUpdateBox after state is updated instead of running handleUpdateBox before the updating has finished.
-    // this is to avoid the quantity in the box only updating AFTER the user clicks the '+' a SECOND time
     this.setState(
-      currentState => ({ quantity: currentState.quantity + 1 }),
+      (currentState) => ({ quantity: currentState.quantity + 1 }),
       () => this.handleUpdateBox(this.state.quantity)
     );
   }
-
-  // import function to reset everything to 0 if a new box size is chosen
 
   // once a subscription is chosen, remainingVolume and remainingValue will no longer be 0 and things can be added to the box.
   render() {
@@ -62,7 +52,7 @@ class Product extends Component {
       ? "Please choose a subscription"
       : "Too big for the box!";
 
-      console.log('this.props', this.props)
+    console.log("this.props", this.props);
 
     return (
       <div className={isDeactivated ? "Product inactive" : "Product"}>

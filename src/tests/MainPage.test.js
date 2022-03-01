@@ -105,22 +105,22 @@ describe("passing props", () => {
 
 describe("checking text", () => {
   it("renders proper volume and points", async () => {
+
+    const volume = fakeSmoothies[0].volume;
+    const points = fakeSmoothies[0].points;
+
     await act(() => {
       render(
         <Product
-          product={fakeSmoothies[0]}
+          volume={volume}
+          points={points}
           mySubscription={mySubscription}
-          volume={fakeSmoothies[0].volume}
-          points={fakeSmoothies[0].points}
         />,
         container
       );
     });
-
-    const volume = fakeSmoothies[0].volume;
-    const points = fakeSmoothies[0].points;
     expect(container.textContent).toContain(
-      `VOLUME: ${volume} in³ | POINTS: ${points}`
+      `VOLUME: 22 in³ | POINTS: 4`
     );
   });
 });
