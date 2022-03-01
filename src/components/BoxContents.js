@@ -30,7 +30,7 @@ class BoxContents extends Component {
 
         </div>
 
-        {stock.map(item => <p className="box-item">{item}</p>)}
+        {stock.map(item => <p className="box-item" key={Object.keys(item)}>{item}</p>)}
 
 
       </div>
