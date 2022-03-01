@@ -128,7 +128,7 @@ class MainPage extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="MainPage">
         <section className="navbar">
           <img
             src="https://splendidspoon.com/static-content/images/ss-logo-symbol-blue@2x.png"
