@@ -2,7 +2,16 @@ This project was built with React and a little Jest & Enzyme.
 
 
 ## Dependencies:
-<a href="https://reactjs.org/" title="React">React: A JavaScript library for building user interfaces<img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="30px" height="30px"></a>
+<img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="30px" height="30px"><a href="https://reactjs.org/" title="React">React: A JavaScript library for building user interfacess</a>
+<br />
+
+<img src="https://github.com/get-icon/geticon/blob/master/icons/jest.svg" alt="Jest" width="30px" height="30px"><a href="https://jestjs.io/" title="Jest" >Jest: a JavaScript Testing Framework</a>
+<br />
+
+<img src="https://github.com/get-icon/geticon/blob/master/icons/enzyme.svg" alt="Enzyme"  width="30px" height="30px"><a href="https://jestjs.io/" title="Enzyme" >Enzyme: a JavaScript Testing utility for React</a>
+<br />
+
+
 
 Set up the code and run it on localhost:3000:
 
