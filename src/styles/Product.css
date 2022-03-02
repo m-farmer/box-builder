@@ -84,6 +84,7 @@ p.product-specs {
   border-radius: 6px;
   padding: 5px;
   font-size: 1.5rem;
+  width: 10%;
 
   /* Position the tooltip */
   position: absolute;
