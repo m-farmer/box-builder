@@ -3,13 +3,6 @@ import "../styles/ProductList.css";
 import Product from "./Product";
 import { generateImages } from "../fruits";
 
-/*
-Reminders that with Class components, we expect Jest to be used to test props and not methods directly.
-make this a functional component??
-
-what's the best way to layout files?? individual folders for each component with its css?
-*/
-
 class ProductList extends Component {
   render() {
     const { products, remainingPoints, remainingVolume, mySubscription } =

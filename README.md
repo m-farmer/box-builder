@@ -1,4 +1,4 @@
-This project was built with JavaScript, React, and a little Jest & Enzyme.
+This project was built with React and a little Jest & Enzyme.
 
 Set up the code and run it on localhost:3000:
 
@@ -6,7 +6,7 @@ Set up the code and run it on localhost:3000:
 `npm start`
 
 
-# Requirements met:
+# Requirements:
 
 ## Design:
 [x] Drop-down menu with Small, Medium, and Large Subscription Options <br />
