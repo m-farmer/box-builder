@@ -1,5 +1,9 @@
 This project was built with React and a little Jest & Enzyme.
 
+
+## Dependencies:
+<a href="https://reactjs.org/" title="React: A JavaScript library for building user interfaces"><img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="30px" height="30px"></a>
+
 Set up the code and run it on localhost:3000:
 
 `npm install` <br />
