@@ -4,10 +4,8 @@ This project was built with React and a little Jest & Enzyme.
 ## Dependencies:
 <img src="https://github.com/get-icon/geticon/raw/master/icons/react.svg" alt="React" width="15px" height="15px"><a href="https://reactjs.org/" title="React">React: A JavaScript library for building user interfaces</a>
 <!-- <br /> -->
-
 <img src="https://github.com/get-icon/geticon/blob/master/icons/jest.svg" alt="Jest" width="15px" height="15px"><a href="https://jestjs.io/" title="Jest" >Jest: a JavaScript Testing Framework</a>
 <!-- <br /> -->
-
 <img src="https://github.com/get-icon/geticon/blob/master/icons/enzyme.svg" alt="Enzyme"  width="15px" height="15px"><a href="https://jestjs.io/" title="Enzyme" >Enzyme: a JavaScript Testing utility for React</a>
 <!-- <br /> -->
 
