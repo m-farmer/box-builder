@@ -1,10 +1,12 @@
+This project was built with JavaScript, React, and a little Jest & Enzyme.
+
 Set up the code and run it on localhost:3000:
 
 `npm install` <br />
 `npm start`
 
 
-# MVP:
+# Requirements met:
 
 ## Design:
 [x] Drop-down menu with Small, Medium, and Large Subscription Options <br />
