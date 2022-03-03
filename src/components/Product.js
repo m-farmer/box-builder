@@ -52,8 +52,6 @@ class Product extends Component {
       ? "Please choose a subscription"
       : "Too big for the box!";
 
-    console.log("this.props", this.props);
-
     return (
       <div className={isDeactivated ? "Product inactive" : "Product"}>
         <img src={`/fruitImages/${this.state.image}`} alt="fruit" />

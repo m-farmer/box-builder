@@ -17,7 +17,7 @@ class DropdownMenu extends Component {
   render() {
     const { subscription } = this.props;
 
-    let options = subscription.map((sub, idx) => (
+    const options = subscription.map((sub, idx) => (
       <option
         key={sub.id}
         value={idx}

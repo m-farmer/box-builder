@@ -33,6 +33,7 @@ class App extends Component {
       const productsResponse = await axios.get(`${BOX_API}products.json`);
 
       if (!productsResponse) throw Error(productsResponse.statusText);
+
       this.setState(
         {
           subscriptions: subscriptionResponse.data.subscriptions,
@@ -71,7 +72,6 @@ class App extends Component {
 
   updateBox(id, qty) {
     // id and qty are passed up from the Product component. the state of the box is updated to reflect the new quantity based on the id
-
     this.setState(
       {
         box: {
@@ -118,7 +118,6 @@ class App extends Component {
               <DropdownMenu
                 subscription={this.state.subscriptions}
                 clickSubscription={this.clickSubscription}
-                mySubscription={this.state.mySubscription}
               />
               <BoxContents
                 box={this.state.box}

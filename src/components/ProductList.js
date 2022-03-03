@@ -5,12 +5,13 @@ import { generateImages } from "../fruits";
 
 class ProductList extends Component {
   render() {
-    const { products, remainingPoints, remainingVolume, mySubscription } =
+    const { products, updateBox, remainingPoints, remainingVolume, mySubscription } =
       this.props;
 
     const categories = [
       ...new Set(products.map((product) => product.category.name)),
     ];
+
 
     const groupByCategory = categories.map((category) =>
       products.filter((item) => item.category.name === category)
@@ -30,7 +31,7 @@ class ProductList extends Component {
                   name={item.name}
                   volume={item.volume}
                   points={item.points}
-                  updateBox={this.props.updateBox}
+                  updateBox={updateBox}
                   remainingVolume={remainingVolume}
                   remainingPoints={remainingPoints}
                   mySubscription={mySubscription}
