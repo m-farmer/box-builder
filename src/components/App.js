@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../styles/MainPage.css";
+import "../styles/App.css";
 import DropdownMenu from "./DropdownMenu";
 import BoxContents from "./BoxContents";
 import ProductList from "./ProductList";
@@ -7,7 +7,7 @@ import axios from "axios";
 
 const BOX_API = "https://mystifying-spence-dc3bda.netlify.app/build-a-box/";
 
-class MainPage extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -149,4 +149,4 @@ class MainPage extends Component {
   }
 }
 
-export default MainPage;
+export default App;
